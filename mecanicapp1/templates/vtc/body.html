@@ -1,0 +1,102 @@
+{% extends 'home.html' %}
+{% block body %}
+    <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Header -->
+        {% include 'vtc/header.html' %}
+        <!-- Sidebar -->
+        {% include 'vtc/sidebar.html' %}
+        <!-- Content -->
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid card">                                    
+                    <div class="row" style="background-color: #63D8F1;">
+                        <div class="col-sm-6">
+                            {% if request.path == '/cuentas/password_change/' %}
+                                <h1 class="m-0 text-white"> Cambiar contraseña </h1>
+                            
+                            {% elif request.path == '/cuentas/password_change/done/' %}
+                                <h1 class="m-0 text-white"> Cambio de contraseña exitoso </h1>                            
+                                
+                            {% else %}
+                                <h1 class="m-0 text-white"> {{desc}} </h1>
+                            {% endif %}
+                        </div>                                                                                                   
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right ">
+                                <li class="breadcrumb-item"><a class="text-white" href="#">Inicio</a></li>                                
+                                {% if request.path == '/cuentas/password_change/' %}
+                                    <li class="breadcrumb-item"><a class="text-white" href="#">Cambiar contraseña</a></li>  
+                                {% elif request.path == '/cuentas/password_change/done/' %}                                  
+                                    <li class="breadcrumb-item"><a class="text-white" href="#">Cambio de contraseña exitoso</a></li>  
+                                {% else %}
+                                    <li class="breadcrumb-item"><a class="text-white" href="{{ list_url }}">{{ entity }}</a></li>
+                                {% endif %}
+                            </ol>
+                        </div>                        
+                    </div>            
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid" >
+                    
+                    {% block content %}
+                    
+                    {% endblock content %}                    
+                </div>
+            </div>
+        </div>
+        <!--Modal para confirmar la salida-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Cerrar Sesión para <mark> {{ user.username}} </mark>?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <div class="modal-body">Al dar click en el botón Salir, cerrará la sesión para <mark> {{ user.username}} </mark>  </div>
+                <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <a class="btn btn-primary" href="{% url 'logout' %}">Salir</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        {% include 'footer.html' %}
+    </div>
+    <!-- Block javascript -->
+    {% block javascript %}
+
+    {% endblock javascript %}
+    <script>
+        {% if messages %}
+            var html = '<p>';
+            {% for message in messages %}
+                html += '{{ message }}<br>';
+            {% endfor %}
+            html += '</p>';
+            Swal.fire({
+                title: 'Error!',
+                html: html,
+                icon: 'error'
+            });
+        {% endif %}
+        /* Modal de cerrar sesión */
+    function abrir_modal(url)
+        {
+            $("#popup").load(url, function(){
+                $(this).modal({
+                    backdrop:'static',
+                    keyboard: false
+                })
+                $(this).modal('show');
+            });
+            return false;
+        }      
+    
+    </script>
+</body>
+{% endblock %}

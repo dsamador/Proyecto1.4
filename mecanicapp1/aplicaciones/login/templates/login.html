@@ -1,0 +1,43 @@
+{% extends 'baseLogin.html' %}
+
+{% block formUser %}    
+
+{% if 'register' in request.GET %}
+    <p style="color: green;">Usuario registrado correctamente, ya puedes iniciar sesión</p>
+{% endif %}
+<form action="." method="post">
+    <input type="hidden" name="next" value="{{ next }}">
+    {% csrf_token %}
+    <div class="input-group mb-3">
+        {{ form.username}}
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-signature"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        {{ form.password}}
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-12 mb-2">
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-sign-in-alt"></i> Ingresar
+            </button>
+        </div>
+        
+        <div class="col-lg-12 m-2">
+            <p>¿Olvidáste tu contraseña? <a class="" href="{% url 'password_reset' %}">Recuperar contraseña</a> </p>
+        </div>
+        <div class="col-lg-12 m-2">
+            <p>¿Aún no tienes cuenta? <a href="{%url 'signup'%}">Crear una cuenta</a> </p>
+        </div>                    
+    </div>
+</form>
+{% endblock formUser %}     

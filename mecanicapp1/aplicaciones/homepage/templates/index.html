@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Mecanicapp</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link rel="icon" href="{% static 'img/mecanicapp.ico' %}" type="image/png"/>
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Techie - v2.0.0
+  * Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container-fluid">
+
+      <div class="row justify-content-center">
+        <div class="col-xl-9 d-flex align-items-center">
+          <h1 class="logo mr-auto"><a href="{%url 'index' %}">Mecanicapp</a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+          <nav class="nav-menu d-none d-lg-block">
+            <ul>
+              <li class="active"><a href="index.html">Inicio</a></li>
+              <li><a href="#about">La App</a></li>
+              <li><a href="#features">Características</a></li>                                      
+              <li><a href="#team">¿Quienes somos?</a></li>              
+              <li><a href="#contact">Contacto</a></li>
+              {% if request.user.is_authenticated %}
+                <li><a href="{% url 'gestion:dashboard' %}">{{request.user.username}}</a></li>
+              {% else %}
+                <li><a href="{% url 'login' %}">Ingresar</a></li>
+              {% endif %}  
+            </ul>
+          </nav><!-- .nav-menu -->                  
+        </div>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container-fluid" data-aos="fade-up">
+      <div class="row justify-content-center">
+        <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1>La Mejor WebApp De Gestión Vehicular</h1>
+          <h2>Descubra lo que Mecanicapp puede hacer por usted</h2>
+          <div><a href="#about" class="btn-get-started scrollto">Descubrir</a></div>
+          <!--<div id="cuenta"><a href="#" class="btn-get-started btn-success scrollto">Crear una cuenta</a></div>-->
+        </div>
+        <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
+          <img src="{% static 'assets/img/hero-img.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+    
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150">
+            <img src="{% static 'assets/img/about.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+            <h3>¿Qué es mecanicapp?</h3>
+            <p class="font-italic">
+              Mecanicapp es una aplicación web y móvil de gestión vehicular para uso personal, que permite llevar cuenta de los siguientes gastos:
+            </p>
+            <ul>
+              <li><i class="icofont-check-circled"></i> por mantenimientos.</li>
+              <li><i class="icofont-check-circled"></i> por lavados.</li>
+              <li><i class="icofont-check-circled"></i> por recargas de combustibles.</li>
+            </ul>            
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">0</span>
+            <p>Clientes</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">2</span>
+            <p>Proyectos (web y móvil)</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">1000</span>
+            <p>Horas de programación</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">1</span>
+            <p>Programador</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+    
+
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Características</h2>
+          <p>Mecanicapp está desarrollada principalmente con la ayuda del framework de desarrollo web Django el cual está basado en el lenguaje de programación Python, además de muchas librerías.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column align-items-lg-center">
+            <div class="icon-box mt-5 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-receipt"></i>
+              <h4>Genere informes en formato PDF</h4>
+              <p>Con mecanicapp puede descargar la información e ir directo a imprimir</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="200">
+              <i class='bx bxs-dashboard'></i>
+              <h4>Observe información relevante en el dashboard</h4>
+              <p>Gracias a nuestro dashboard usted puede observar la información que realmente importa y tomar decisiones basada en ella</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bx-images"></i>
+              <h4>Suba imágenes y fotografías</h4>
+              <p>Suba la imágen de su vehículo y las fotos de los recibos por los servicios</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="400">
+              <i class="bx bx-shield"></i>
+              <h4>Seguridad</h4>
+              <p>Puede estar tranquilo por sus datos pues la seguridad es nuestra prioridad</p>
+            </div>
+          </div>
+          <div class="image col-lg-6 order-1 order-lg-2 " data-aos="zoom-in" data-aos-delay="100">
+            <img src="{% static 'assets/img/features.svg' %}" alt="" class="img-fluid">
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Features Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="team" class="testimonials section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>¿Quienes somos?</h2>
+          <p>Somos un grupo de estudiantes de la Corporación Bolivariana del Norte. </p>          
+          <p>Nuestros nombres son los siguientes:</p>
+          <p>Alejandro Espinosa, David Amador y Sergio Valverde</p>
+        </div>                          
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contacto</h2>
+          <p>Puedes encontrarme en clases en la Corporación Bolivariana del Norte</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Dirección</h3>
+              <p>Av. El Libertador ##13-45, Santa Marta, Magdalena</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email</h3>
+              <p>info@cbn.edu.co</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Teléfono</h3>
+              <p>300 471 4060</p>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="row">
+
+          <div class="col-lg-12">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1508.7589907479976!2d-74.20214528303039!3d11.243992235835861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sco!4v1593809942584!5m2!1ses-419!2sco" width="100%" height="380px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            
+          </div>
+          
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-12 footer-contact">
+            <h3>Mecanicapp</h3>
+            <p>
+              Av. El Libertador ##13-45<br>
+              Santa Marta, Magdalena<br>
+              Colombia <br><br>
+              <strong>Teléfono:</strong> 300 471 4060<br>
+              <strong>Email:</strong> info@cbn.edu.co<br>
+            </p>
+          </div>
+
+          <div class="col-lg-4 col-md-8 footer-links">
+            <h4></h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">La app</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#features">Características</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#team">Sobre mi</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contacto</a></li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="copyright-wrap d-md-flex py-4">
+        <div class="mr-md-auto text-center text-md-left">
+          <div class="copyright">
+            &copy; Copyright <strong><span>Mecanicapp</span></strong>. Todos los derechos reservados
+          </div>
+          <div class="credits">
+            
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
